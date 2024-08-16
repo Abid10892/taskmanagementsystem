@@ -28,7 +28,7 @@ const Page: React.FC = () => {
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
         try {
 
-            data.id = localStorage.getItem("user");
+            (data as any).id = localStorage.getItem("user");
 
             const res = await fetch("/api/add-task", {
                 headers: {
