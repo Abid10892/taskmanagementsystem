@@ -9,8 +9,6 @@ export async function POST(request:Request) {
     
     try {
         const {email, password} = await request.json();
-        // const data = await request.json();
-        // console.log("dsfd", data);
         
         const user = await UserModel.findOne({
             $or: [{
@@ -49,14 +47,14 @@ export async function POST(request:Request) {
 
             const accessToken = jwt.sign(
                 {_id: user._id, email: user.email, username: user.username}, 
-                process.env.ACCESS_TOKEN_SECRET,
+                process.env.ACCESS_TOKEN_SECRET || 'default_secret_key',
                 {expiresIn: process.env.ACCESS_TOKEN_EXPIRY}
             )
             
 
             const refreshToken = jwt.sign(
                 {_id: user._id, email: user.email, username: user.username}, 
-                process.env.REFRESH_TOKEN_SECRET,
+                process.env.REFRESH_TOKEN_SECRET || 'default_secret_key',
                 {expiresIn: process.env.REFRESH_TOKEN_EXPIRY}
             )
             
