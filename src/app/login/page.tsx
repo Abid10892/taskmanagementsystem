@@ -116,7 +116,7 @@ const Page: React.FC = () => {
                 </form>
                 <div className="flex gap-4">
 
-                    <p>Don't have an account?</p><Link href={'/signup'} className="text-indigo-500">Sign Up</Link>
+                    <p>{`Don't have an account?`}</p><Link href={'/signup'} className="text-indigo-500">Sign Up</Link>
                 </div>
             </div>
         </div>
