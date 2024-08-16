@@ -3,26 +3,7 @@ import Task from "@/components/Task";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-// const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-// async function fetchData(user) {
-//   try {
-//     const res = await fetch(`${baseUrl}/api/get-task`, {
-//       method: 'GET',
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: user,
-//       cache: "no-cache"
-//     });
-//     if (!res.ok) {
-//       throw new Error('Failed to fetch data');
-//     }
-//     return res;
-//   } catch (error: any) {
-//     console.log(error.message);
 
-//   }
-// }
 
 export default function Home() {
 
