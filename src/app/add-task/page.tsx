@@ -10,6 +10,7 @@ interface LoginFormInputs {
     title: string;
     description: string;
     dueDate: string;
+    id: string;
 }
 
 const Page: React.FC = () => {

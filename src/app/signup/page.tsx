@@ -24,6 +24,12 @@ const Page: React.FC = () => {
 
     const router = useRouter();
 
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+            router.push('/');
+        }
+    }, []);
+
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
         try {
             const res = await fetch("/api/signup", {
