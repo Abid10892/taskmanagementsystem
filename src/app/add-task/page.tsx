@@ -10,7 +10,7 @@ interface LoginFormInputs {
     title: string;
     description: string;
     dueDate: string;
-    id: string;
+    id: null;
 }
 
 const Page: React.FC = () => {
@@ -27,7 +27,9 @@ const Page: React.FC = () => {
 
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
         try {
+
             data.id = localStorage.getItem("user");
+
             const res = await fetch("/api/add-task", {
                 headers: {
                     "Content-Type": "application/json",
