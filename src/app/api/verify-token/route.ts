@@ -9,8 +9,8 @@ export async function POST(request:NextRequest) {
     try {
         
         
-        const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-        const user = await UserModel.findById(decodeToken._id);
+        const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET || 'default_secret_key')
+        const user = await UserModel.findById((decodeToken as any)._id);
         if(!user){
             return Response.json(
                 {
