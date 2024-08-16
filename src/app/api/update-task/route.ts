@@ -32,7 +32,7 @@ export async function PATCH(request:Request) {
             message: "Task updated Successfully"
         }, {status: 200})
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error in Adding Task', error)
         return Response.json(
             {

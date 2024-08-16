@@ -29,7 +29,7 @@ export async function POST(request:Request) {
             task
         }, {status: 200})
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error in Fetching Task', error)
         return Response.json(
             {

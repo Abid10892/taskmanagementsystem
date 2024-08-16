@@ -70,11 +70,6 @@ export async function POST(request:Request) {
             
             
 
-              const options = {
-                httpOnly: true,
-                secure: true,
-              };
-
 
             
 
@@ -109,7 +104,7 @@ export async function POST(request:Request) {
     return response;
 
      
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error Login user', error)
         return Response.json(
             {

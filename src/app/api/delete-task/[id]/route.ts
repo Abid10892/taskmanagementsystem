@@ -28,7 +28,7 @@ export async function DELETE(request:Request, { params }: { params: { id: string
             task
         }, {status: 200})
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error in Fetching Task', error)
         return Response.json(
             {

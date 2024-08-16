@@ -41,7 +41,7 @@ export async function POST(request:Request) {
             message: "Task Added Successfully"
         }, {status: 200})
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error in Adding Task', error.message)
         return Response.json(
             {

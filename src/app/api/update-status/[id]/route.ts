@@ -33,7 +33,7 @@ export async function PATCH(request:Request, { params }: { params: { id: string 
             message: "Task Status Updated Successfully",
         }, {status: 200})
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error in Fetching Task', error)
         return Response.json(
             {
