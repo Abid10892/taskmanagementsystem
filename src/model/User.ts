@@ -1,4 +1,4 @@
-import mongoose, {Schema, Document} from 'mongoose';
+import mongoose, {Schema, Document, Model} from 'mongoose';
 
 
 
@@ -30,5 +30,5 @@ const UserSchema: Schema<User> = new Schema({
     
 }, {timestamps: true});
 
-const UserModel = mongoose.models.User as mongoose.Model<User> || mongoose.model<User>("User", UserSchema);
+const UserModel: Model<User> = mongoose.models.User as mongoose.Model<User> || mongoose.model<User>("User", UserSchema);
 export default UserModel;

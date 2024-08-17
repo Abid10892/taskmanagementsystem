@@ -1,13 +1,13 @@
 
-import mongoose, {Schema, Document} from 'mongoose';
+import mongoose, {Schema, Document, Model} from 'mongoose';
 
 
 export interface Task extends Document{
     title: string,
     description: string,
-    status: string,
+    status: "pending" | "completed",
     dueDate: Date,
-    user: string,
+    user: mongoose.Schema.Types.ObjectId,
 };
 
 const TaskSchema: Schema<Task> = new Schema({
@@ -38,5 +38,5 @@ const TaskSchema: Schema<Task> = new Schema({
     
 }, {timestamps: true});
 
-const TaskModel = mongoose.models.Task as mongoose.Model<Task> || mongoose.model<Task>("Task", TaskSchema);
+const TaskModel: Model<Task> = mongoose.models.Task as mongoose.Model<Task> || mongoose.model<Task>("Task", TaskSchema);
 export default TaskModel;
