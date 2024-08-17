@@ -49,6 +49,15 @@ const Task: React.FC<TaskProps> = ({ task }) => {
         }
     }
 
+    const dateString = task.dueDate;
+    const date = new Date(dateString);
+
+    const formattedDate = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
     return (
         <div className='bg-indigo-600 text-white rounded p-5 w-[90%] md:w-[45%] flex flex-col items-center justify-center gap-4'>
             <h1 className='underline font-bold text-3xl text-center'>{task.title}</h1>
@@ -59,7 +68,8 @@ const Task: React.FC<TaskProps> = ({ task }) => {
                     <input type='checkbox' id='checkbox' checked={task.status === 'completed' ? true : false} onChange={() => handleChange(task._id)} className='w-[18px] h-[18px] cursor-pointer accent-white' />
                     <label htmlFor='checkbox'>{task.status}</label>
                 </div>
-                <div className='flex gap-5'>
+                <div className='flex gap-6'>
+                    <p>Due Date: {formattedDate}</p>
                     <Link href={`/edit-task/${task._id}`}><Pencil /></Link>
                     <button aria-label='delete' onClick={() => handleDelete(task._id)}><Trash2 /></button>
                 </div>
