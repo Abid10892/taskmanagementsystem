@@ -63,7 +63,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             <h1 className='underline font-bold text-3xl text-center'>{task.title}</h1>
             <p>{task.description}</p>
             <div className='w-full h-[1px] bg-white'></div>
-            <div className='flex w-full justify-around items-center gap-20'>
+            <div className='flex w-full justify-around items-center gap-16'>
                 <div className='flex gap-2 items-center justify-center'>
                     <input type='checkbox' id='checkbox' checked={task.status === 'completed' ? true : false} onChange={() => handleChange(task._id)} className='w-[18px] h-[18px] cursor-pointer accent-white' />
                     <label htmlFor='checkbox'>{task.status}</label>
