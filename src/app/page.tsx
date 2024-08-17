@@ -3,12 +3,18 @@ import Task from "@/components/Task";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-
+interface Task {
+  _id: string;
+  title: string;
+  description: string;
+  dueDate: string;
+  status: string;
+}
 
 export default function Home() {
 
-  const [tasks, setTasks] = useState<any>([]);
-  async function fetchData(user: any) {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  async function fetchData(user: string | null) {
     try {
       const res = await fetch(`/api/get-task`, {
         method: 'POST',
@@ -35,8 +41,6 @@ export default function Home() {
 
   }, [])
 
-  // const data = await fetchData(user);
-  // const tasks = await data?.json();
 
 
   return (
