@@ -4,10 +4,20 @@ import Link from 'next/link'
 import React from 'react';
 
 
+interface TaskProps {
+    task: {
+        _id: string;
+        title: string;
+        description: string;
+        dueDate: string;
+        status: string;
+    };
+}
 
-const Task: React.FC = ({ task }) => {
 
-    const handleDelete = async (id) => {
+const Task: React.FC<TaskProps> = ({ task }) => {
+
+    const handleDelete = async (id: string) => {
         try {
             const res = await fetch(`/api/delete-task/${id}`, {
                 method: 'DELETE'
@@ -18,13 +28,13 @@ const Task: React.FC = ({ task }) => {
                 window.location.reload();
             }
 
-        } catch (error) {
+        } catch (error: any) {
             console.log(error.message);
 
         }
     }
 
-    const handleChange = async (id) => {
+    const handleChange = async (id: string) => {
         try {
             const res = await fetch(`/api/update-status/${id}`, {
                 method: 'PATCH'
@@ -33,7 +43,7 @@ const Task: React.FC = ({ task }) => {
                 window.location.reload();
             }
 
-        } catch (error) {
+        } catch (error: any) {
             console.log(error.message);
 
         }
@@ -51,7 +61,7 @@ const Task: React.FC = ({ task }) => {
                 </div>
                 <div className='flex gap-5'>
                     <Link href={`/edit-task/${task._id}`}><Pencil /></Link>
-                    <button onClick={() => handleDelete(task._id)}><Trash2 /></button>
+                    <button aria-label='delete' onClick={() => handleDelete(task._id)}><Trash2 /></button>
                 </div>
             </div>
         </div>
