@@ -2,7 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function NavbarLinks({ closeNav = null }) {
+
+interface NavbarLinksProps {
+    closeNav?: () => void;
+}
+
+const NavbarLinks: React.FC<NavbarLinksProps> = ({ closeNav = () => { } }) => {
 
     const [showLogout, setShowLogout] = useState(false);
 
@@ -45,3 +50,6 @@ export default function NavbarLinks({ closeNav = null }) {
         </>
     );
 }
+
+
+export default NavbarLinks;
