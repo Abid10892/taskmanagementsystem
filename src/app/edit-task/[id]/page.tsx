@@ -11,7 +11,7 @@ interface LoginFormInputs {
     title: string;
     description: string;
     dueDate: string;
-    gender: string;
+    status: string;
 }
 
 const Page: React.FC = () => {
@@ -30,16 +30,27 @@ const Page: React.FC = () => {
 
             });
             if (!res.ok) {
+
                 throw new Error('Failed to update task');
             }
             const response = await res.json();
             let { title, description, dueDate, status } = response.task;
             dueDate = new Date(dueDate).toISOString().slice(0, 10);
 
-            return { title, description, dueDate, status }
+            return {
+                title: title || "",
+                description: description || "",
+                dueDate: dueDate || "",
+                status: status || "",
+            };
         } catch (error: any) {
             console.log(error.message);
-
+            return {
+                title: "",
+                description: "",
+                dueDate: "",
+                status: "",
+            };
         }
     }
 
@@ -52,7 +63,10 @@ const Page: React.FC = () => {
         reset,
         formState: { errors, isValid },
     } = useForm<LoginFormInputs>({
-        defaultValues: () => fetchData()
+        defaultValues: async () => {
+            const data = await fetchData();
+            return data;
+        }
     });
 
     const router = useRouter();
@@ -61,7 +75,7 @@ const Page: React.FC = () => {
 
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
         try {
-            data.id = id
+            (data as any).id = id
             const res = await fetch("/api/update-task", {
                 headers: {
                     "Content-Type": "application/json",

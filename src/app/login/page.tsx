@@ -27,6 +27,7 @@ const Page: React.FC = () => {
         if (localStorage.getItem("user")) {
             router.push('/');
         }
+        setFocus("email")
     }, []);
 
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
@@ -74,7 +75,7 @@ const Page: React.FC = () => {
                             <>
                                 <input
                                     type="email"
-                                    placeholder="Enter your Email/Username"
+                                    placeholder="Enter your Email"
                                     className="md:w-[400px] w-[90%] border-black border-b-2 rounded p-2 bg-gray-100 text-1xl focus:border-b-2 focus:border-indigo-600 focus:outline-none"
                                     id="email"
                                     {...field}

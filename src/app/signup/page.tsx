@@ -28,6 +28,7 @@ const Page: React.FC = () => {
         if (localStorage.getItem("user")) {
             router.push('/');
         }
+        setFocus("username")
     }, []);
 
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
@@ -43,21 +44,17 @@ const Page: React.FC = () => {
             const response = await res.json();
             toast.success(response.message);
             reset();
-            router.push("/admin-home");
+            setTimeout(() => {
+                router.push("/login");
+
+            }, 1000)
         } catch (error: any) {
             console.log(error.message);
             toast.error(error.message);
         }
     };
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            router.push("/admin-home");
-        } else {
-            setFocus("username");
-        }
-    }, [router, setFocus]);
+
 
     return (
         <div className="flex items-center justify-center h-[100vh]">
