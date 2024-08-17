@@ -63,12 +63,12 @@ const Task: React.FC<TaskProps> = ({ task }) => {
             <h1 className='underline font-bold text-3xl text-center'>{task.title}</h1>
             <p>{task.description}</p>
             <div className='w-full h-[1px] bg-white'></div>
-            <div className='flex w-full justify-around items-center gap-16'>
+            <div className='flex md:flex-row flex-col gap-5 w-full justify-around items-center md:gap-16'>
                 <div className='flex gap-2 items-center justify-center'>
                     <input type='checkbox' id='checkbox' checked={task.status === 'completed' ? true : false} onChange={() => handleChange(task._id)} className='w-[18px] h-[18px] cursor-pointer accent-white' />
                     <label htmlFor='checkbox'>{task.status}</label>
                 </div>
-                <div className='flex gap-6'>
+                <div className='flex items-center gap-3 md:gap-6'>
                     <p>Due Date: {formattedDate}</p>
                     <Link href={`/edit-task/${task._id}`}><Pencil /></Link>
                     <button aria-label='delete' onClick={() => handleDelete(task._id)}><Trash2 /></button>

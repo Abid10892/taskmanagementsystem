@@ -46,7 +46,6 @@ const Page: React.FC = () => {
             localStorage.setItem("user", user);
 
             toast.success(response.message);
-            reset();
             router.push("/");
             router.refresh();
         } catch (error: any) {
@@ -114,7 +113,7 @@ const Page: React.FC = () => {
 
                     <button
                         type="submit"
-                        className="bg-indigo-600 md:w-[400px] w-[90%] p-4 rounded text-white font-semibold border-2 hover:bg-white hover:text-indigo-600 hover:border-2 hover:border-indigo-600 pl-8 pr-8 transition-all ease-linear duration-100 cursor-pointer"
+                        className="bg-indigo-600 disabled:bg-gray-500 md:w-[400px] w-[90%] p-4 rounded text-white font-semibold border-2 active:hover:bg-white active:hover:text-indigo-600 active:hover:border-2 active:hover:border-indigo-600 pl-8 pr-8 transition-all ease-linear active:duration-100 active:cursor-pointer"
                         disabled={!isValid}
                     >
                         Login
